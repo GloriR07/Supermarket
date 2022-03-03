@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Supermarket
+﻿namespace Supermarket
 {
     public class ComposedProduct : Product
     {
-        public Decimal Discount { get; set; }
+        public decimal Discount { get; set; }
 
-        public string Products { get; set; }
-        public override string ValueToPay()
+        public List<Product> Products { get; set; }
+
+        public override decimal  ValueToPay()
         {
-            throw new NotImplementedException();
+            decimal TotPrice = 0;
+
+            foreach (Product superM in Products) {
+                TotPrice = TotPrice + superM.ValueToPay();
+            }
+            return TotPrice - (TotPrice * (decimal)Discount);
+        }
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }

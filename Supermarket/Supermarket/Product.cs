@@ -1,22 +1,22 @@
 ﻿namespace Supermarket
 {
-    public abstract class Product
+    public abstract class Product : IPay
     {
         public string Description { get; set; }
 
         public int Id { get; set; }
 
-        public Decimal Price { get; set; }
+        public decimal Price { get; set; }
 
         public float Tax { get; set; }
 
         public override string ToString()
         {
-            return $"{Description} {Id}  Price: {Price}, Tax:{(Price * (decimal)Tax) + Price}";
+            return $"{Description} {Id}";
+               
         }
-        public abstract string ValueToPay();
-
-
+        public abstract decimal ValueToPay();
+           
 
     }
 }
