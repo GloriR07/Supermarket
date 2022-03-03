@@ -10,8 +10,7 @@
         {
             decimal TotPrice = 0;
 
-            foreach (Product superM in Products) {
-                TotPrice = TotPrice + superM.ValueToPay();
+            foreach (Product  in Products) {
             }
             return TotPrice - (TotPrice * (decimal)Discount);
         }
